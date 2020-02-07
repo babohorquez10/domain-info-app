@@ -92,6 +92,7 @@ func ServerInfo(ctx *fasthttp.RequestCtx) {
 
 	InsertHostInfo(ser)
 
+	ctx.Response.Header.Set("Access-Control-Allow-Origin", "*")
 	ctx.Response.Header.SetCanonical(strContentType, strApplicationJSON)
 	json.NewEncoder(ctx).Encode(servers)
 
@@ -193,6 +194,7 @@ func GetHostsInfo(ctx *fasthttp.RequestCtx) {
 
 	}
 
+	ctx.Response.Header.Set("Access-Control-Allow-Origin", "*")
 	ctx.Response.Header.SetCanonical(strContentType, strApplicationJSON)
 	json.NewEncoder(ctx).Encode(items)
 }
